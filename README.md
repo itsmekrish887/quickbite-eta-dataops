@@ -28,3 +28,11 @@ This repository documents both the prototype and the AI-assisted development pro
 ## Disclaimer
 
 This is a case-study prototype. All data, metrics, incidents, and operational scenarios used in this project are synthetic.
+
+## Live Demo
+
+The working prototype is deployed on Replit:
+
+[Launch QuickBite ETA Data Ops Control Tower](https://quick-bite-operations-dashboard--itsmekrish887.replit.app)
+
+> Note: This prototype uses synthetic data and was developed as part of an AI Data Operations case study.
