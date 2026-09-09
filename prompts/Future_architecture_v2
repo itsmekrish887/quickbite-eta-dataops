@@ -1,0 +1,85 @@
+Refactor the existing QuickBite ETA Data Ops application so that
+approved uploaded order data becomes the single source of truth
+for all dashboard analytics.
+
+Currently some dashboard sections remain static after data ingestion.
+
+This must change.
+
+After a dataset is validated and approved, dynamically recalculate:
+
+1. SERVICE SURFACE · BY CITY
+- order volume
+- MAE
+- P90 error
+- within ±10 minute rate
+- underprediction rate
+- overprediction rate
+- city health status
+
+2. DATA READINESS
+Calculate from the uploaded dataset:
+- schema validity
+- completeness
+- missing-value rate
+- duplicate rate
+- city coverage
+- weather coverage
+- stable-data coverage
+- seasonal-data coverage
+- edge-case coverage
+
+3. DATA QUALITY
+Separate automated operational-data quality from human annotation QA.
+
+Automated Data QA:
+- schema validity
+- missing values
+- duplicates
+- invalid ETA values
+- invalid categorical values
+
+Human Annotation QA:
+Only show this for records or incidents that contain human-reviewed labels.
+Do not imply that all ETA telemetry is manually annotated.
+
+4. EMERGING ISSUES · ACTION QUEUE
+
+Generate issues dynamically by comparing cohort performance against
+the overall baseline and relevant city baseline.
+
+Analyze cohorts including:
+- city
+- weather
+- traffic
+- restaurant load
+- rider reassignment
+- data segment
+
+Surface combinations with materially worse ETA performance.
+
+Each issue should contain:
+- priority
+- affected cohort
+- number of affected orders
+- MAE
+- baseline MAE
+- percentage degradation
+- likely contributing factors
+- recommended Data Ops action
+
+Do not use hard-coded issue cards when an uploaded dataset is active.
+
+5. DATA PERSISTENCE
+
+After approval, maintain the uploaded dataset in application state
+so that all pages and components read from the same approved dataset.
+
+Add a clear indicator showing:
+"Active Dataset"
+and the number of records currently being analyzed.
+
+Do not redesign the UI yet.
+
+First fix the underlying data flow and ensure all existing dashboard
+components react to the approved uploaded dataset.
