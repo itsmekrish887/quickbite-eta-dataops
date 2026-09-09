@@ -1,0 +1,102 @@
+Now extend the application with drill-down navigation.
+
+Create four primary pages:
+
+1. Overview
+2. Data
+3. Metrics
+4. Issues
+
+OVERVIEW
+
+Keep the existing executive dashboard.
+
+Show:
+- system health
+- major KPIs
+- Service Surface by City
+- Data Readiness
+- Data Quality / Annotation QA
+- Emerging Issues
+- Targeted Data Action Queue
+
+All values must derive from the currently approved dataset.
+
+DATA PAGE
+
+Create a detailed Data Operations view showing:
+
+- total records
+- valid records
+- rejected records
+- Stable / Seasonal / Edge Case distribution
+- distribution by city
+- distribution by weather
+- distribution by traffic level
+- distribution by restaurant load
+- missing-value analysis
+- duplicate analysis
+- schema validation
+- coverage matrix
+
+Create a City × Scenario coverage matrix.
+
+Highlight underrepresented cohorts.
+
+METRICS PAGE
+
+Create a model evaluation deep dive.
+
+Show:
+- MAE
+- P50 absolute error
+- P90 absolute error
+- within ±10 minute percentage
+- underprediction rate
+- overprediction rate
+
+Allow filtering by:
+- city
+- weather
+- traffic level
+- restaurant load
+- data segment
+- rider reassignment
+
+Show cohort comparisons and highlight cohorts performing
+materially worse than baseline.
+
+ISSUES PAGE
+
+Create a detailed issue-management view.
+
+Show:
+- P0 / P1 / P2 incidents
+- affected cohort
+- affected order volume
+- baseline performance
+- current performance
+- percentage degradation
+- suspected contributing factors
+- recommended Data Ops action
+- status
+- human approval state
+
+DRILL-DOWN BEHAVIOR
+
+Make dashboard components clickable.
+
+Example:
+
+Clicking Mumbai on Service Surface should navigate to Metrics
+with City = Mumbai already selected.
+
+Clicking a cohort such as Heavy Rain should navigate to Metrics
+with that cohort filter applied.
+
+Clicking an Emerging Issue should navigate to the Issues page
+and open the corresponding issue details.
+
+Maintain the selected dataset and filters across navigation.
+
+Keep the existing visual design consistent.
