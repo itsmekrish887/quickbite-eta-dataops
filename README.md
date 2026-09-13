@@ -33,6 +33,6 @@ This is a case-study prototype. All data, metrics, incidents, and operational sc
 
 The working prototype is deployed on Replit:
 
-[Launch QuickBite ETA Data Ops Control Tower](https://quick-bite-operations-dashboard--itsmekrish887.replit.app)
+[[Launch QuickBite ETA Data Ops Control Tower](https://quick-bite-operations-dashboard--itsmekrish887.replit.app)](https://quick-bite-operations-dashboard--itsmekrish887.replit.app)
 
 > Note: This prototype uses synthetic data and was developed as part of an AI Data Operations case study.
