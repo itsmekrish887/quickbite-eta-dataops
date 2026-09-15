@@ -1,156 +1,118 @@
-# AI Prompting & Development Progress
+Refine my existing QuickBite Operations Dashboard to make it cleaner and easier to present for a Senior AI Data Operations Manager case study.
 
-The QuickBite prototype was built using **iterative AI-assisted development**, not a single prompt.
+IMPORTANT: Do not rebuild the app. Do not change the approved order schema, synthetic datasets, calculations, routes, upload functionality, filters, issue-detection logic, or other working business logic. Focus on simplifying the existing UI, removing duplicate information, and improving visual hierarchy.
 
-My approach was:
+The dashboard should tell four simple stories:
 
-**Prompt → Build → Review → Identify Gap → Refine → Test**
+Overview = Is the system healthy?
+Data = Can I trust the data?
+Metrics = Where is the model failing?
+Issues = What should Data Ops do about it?
 
-AI accelerated implementation, while I retained ownership of the operating model, metrics, data strategy, governance, and final decisions.
+OVERVIEW PAGE:
 
----
+Simplify the page into four main sections.
 
-## Prompt Progression
+1. Model Health: Keep MAE, P90 Error, Within ±10 min, and Underprediction Rate.
 
-| Prompt | Focus | Why I Added It |
-|---|---|---|
-| **01 — Initial Dashboard** | Model, pipeline, QA, vendor and issue monitoring | Establish the basic AI Data Ops control room |
-| **02 — Actionable Dashboard** | Recommendations, severity, sample size, priority | The first version showed problems but didn't answer **“What should Data Ops do next?”** |
-| **03 — Data Segmentation** | Stable, Seasonal and Edge-Case data | Different data types require different sourcing, sampling and refresh strategies |
-| **04 — Edge Case Radar** | Emerging operational risks | Move from only detecting failures to anticipating **what might fail next** |
-| **05 — Agentic Workflow** | Detection → Triage → Data Strategy → Evaluation | Break AI assistance into clear operational responsibilities |
-| **06 — Human Governance** | Approve / Modify / Reject + Decision Trace | AI should recommend, but humans control consequential actions |
-| **07 — Data Ingestion** | CSV/JSON → Validate → Preview → Approve | Move from a static demo toward a functional Data Ops workflow |
-| **08 — Dynamic Analytics** | MAE, P90, QA, readiness, cohort issues | Make approved data drive the dashboard instead of static values |
-| **08 — Drill-Down** | Overview → Data → Metrics → Issues | Allow operators to move from **signal → evidence → action** |
-| **Next Iteration** | UX simplification | Reduce duplication and simplify the final presentation |
+2. Operational Health: Show Data Readiness, Open P0 Issues, Active Vendor Batches, and Annotation QA as compact KPIs.
 
----
+3. Needs Attention: Show only the top 3 highest-priority issues such as Mumbai × Heavy Rain, Bengaluru × Rider Reassignment, and New Restaurants. Show severity, cohort, key degradation metric, and a View Issue action.
 
-## How the Product Evolved
+4. Vendor & Batch Status: Keep the existing Batch Intake / Vendor Batch functionality but make it compact. Show Batch ID, Vendor, Progress %, QA Score, SLA, and Status.
 
-**Monitoring**
+Remove or heavily simplify the existing Operating Posture / Signal Board because it duplicates information available elsewhere.
 
-↓  
-**Actionable Recommendations**
+DATA PAGE:
 
-↓  
-**Targeted Data Strategy**
+Keep the existing 6-step governed ingestion workflow:
+Upload → Schema Validation → Data Quality → Preview → Classification → Approve Ingestion.
 
-↓  
-**Proactive Edge-Case Detection**
+Keep the existing Data Readiness, Annotation QA, human approval, validation logic, and upload functionality.
 
-↓  
-**Agentic Decision Support**
+Rename “Manual Edge-Case Entry” to “Proactive Edge Case Intake”.
 
-↓  
-**Human Governance**
+Add this description:
+“Log known upcoming operational risks before they appear as production model failures.”
 
-↓  
-**Governed Data Ingestion**
+This should support proactive risks such as new city launches, festivals, severe weather, operational changes, and new restaurant cohorts.
 
-↓  
-**Dynamic Analytics**
+Do not change the approved order schema.
 
-↓  
-**Signal → Evidence → Action**
+METRICS PAGE:
 
----
+Keep this page focused only on model analysis.
 
-## AI vs Human Responsibility
+Structure it as:
+Global Performance → City Performance → Cohort Drill-Down.
 
-### AI / Replit accelerated
-- UI and React implementation
-- Component creation
-- Workflow implementation
-- Code iteration and refactoring
-- Visualization and navigation
+Keep MAE, P90, Within ±10 min, Underprediction, city comparisons, existing filters, and drill-down functionality.
 
-### I defined and controlled
-- Data Ops operating model
-- KPI and evaluation strategy
-- Stable / Seasonal / Edge-Case strategy
-- Targeted data approach
-- Agent responsibilities
-- Human approval boundaries
-- Acceptance criteria
-- Final implementation decisions
+Do not add vendor operations, annotation QA, edge-case intake, or workflow management to this page.
 
-> **AI accelerated implementation; it did not own the product decisions.**
+The purpose of the Metrics page should be immediately clear: “Where is the model failing?”
 
----
+ISSUES PAGE:
 
-## Key Prompting Learning
+Merge the existing “Emerging Issues & Action Queue” and “Edge Case Radar” into one unified “Issues & Edge Cases” section.
 
-My prompting became more structured as the application matured:
+Do not display the same incident twice.
 
-**Broad Prompting**  
-“Build an AI Data Operations dashboard.”
+Each issue should follow this structure:
+Signal → Evidence → Root-Cause Hypothesis → Recommended Data Action → Human Decision.
 
-↓
+For each issue, show the most relevant information from the existing system such as severity (P0/P1/P2), cohort, MAE, baseline MAE, P90, underprediction, affected records, degradation, suspected cause, recommended action, and human review/approval status.
 
-**Iterative Prompting**  
-“The dashboard is too descriptive. Make issues actionable.”
+Keep Targeted Data Acquisition, but simplify the visible name to “Targeted Data Plan”.
 
-↓
+For a selected issue, show:
+Cohort
+Data Role: Baseline / Seasonal / Edge Case
+Current Coverage
+Desired Coverage
+Coverage Gap
+Sampling Strategy
+Annotation Priority
+Reason for Collection
 
-**Constraint-Based Prompting**  
-“Change this workflow without changing the approved schema or existing calculations.”
+The principle should be:
+“Do not collect more data. Collect the data required to close a demonstrated model gap.”
 
-↓
+TERMINOLOGY:
 
-**Acceptance-Criteria Prompting**  
-“After approval, all pages must dynamically use the approved dataset.”
+Reduce terminology overload across the application.
 
-This reduced unintended changes as the application became more complex.
+Prefer these labels:
+Model Health
+Data Health
+Vendor Batches
+City Performance
+Issues & Edge Cases
+Targeted Data Plan
+Proactive Edge Case Intake
 
----
+Do not create additional names for concepts that already exist.
 
-## Important Design Principle
+DESIGN:
 
-I intentionally kept deterministic calculations such as:
+Keep the current professional visual identity, but make the dashboard cleaner and less crowded.
 
-**MAE, P90, missing values, duplicates and validation**
+Use fewer cards, more whitespace, consistent spacing, consistent card heights, clear section hierarchy, and shorter labels.
 
-outside AI reasoning.
+Avoid large blocks of explanatory text inside the dashboard.
 
-AI is more useful for:
+Do not add new sections unless absolutely necessary.
 
-**Detection → Triage → Hypothesis → Recommendation**
+FINAL WORKFLOW:
 
-while humans remain responsible for consequential decisions.
+The application should communicate this operating model:
 
-> **Deterministic where possible, AI-assisted where useful, human-governed where consequential.**
+Production → Monitor → Detect → Triage → Target Data → Vendor/Human Review → QA → Evaluate → Retrain → Regression Test → Human Approval → Production.
 
----
+The application should feel like one connected AI Data Operations Control Tower rather than several unrelated dashboards.
 
-## Proposed Next Iteration — Not Executed
+AI can detect, triage, analyze, and recommend. Humans retain approval over consequential actions.
 
-The final UX simplification prompt in `/prompts` was **not injected into the deployed application**.
+Make these changes using the existing components and architecture wherever possible. Do not unnecessarily rewrite working code.
 
-During final review, I identified some duplicated information across Overview, Issues and Edge Case Radar and prepared a simplification prompt.
-
-My available Replit credits ended before I could implement and regression-test the change, so I retained the **last tested working version**.
-
-The proposed simplification was:
-
-- **Overview:** Is the system healthy?
-- **Data:** Can I trust the data?
-- **Metrics:** Where is the model failing?
-- **Issues:** What should Data Ops do?
-
----
-
-## Final Takeaway
-
-The prompting journey was not:
-
-**“Ask AI to build a dashboard.”**
-
-It was:
-
-**Define → Build → Review → Challenge → Refine → Validate**
-
-The prototype evolved from a monitoring dashboard into an **AI-assisted Data Operations decision-support system** connecting:
-
-**Production Signal → Model Gap → Targeted Data → Human/Vendor Execution → Evaluation → Model Improvement**
+After implementation, verify that Overview, Data, Metrics, and Issues still work and that uploads, calculations, filters, cohort drill-downs, issue detection, human decisions, and vendor batch functionality have not been broken.
