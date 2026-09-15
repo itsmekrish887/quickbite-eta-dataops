@@ -1,0 +1,200 @@
+Refine the existing QuickBite Operations Dashboard to make it cleaner, simpler, and easier to explain during a Senior AI Data Operations Manager case-study presentation.
+
+IMPORTANT:
+- Do NOT rebuild the application.
+- Do NOT change the existing approved order schema, calculations, synthetic datasets, routing, upload functionality, or working business logic.
+- Preserve all existing functionality unless explicitly requested below.
+- Focus primarily on information architecture, removing duplication, simplifying terminology, and improving visual hierarchy.
+- Keep the existing professional visual style.
+
+The dashboard should tell one simple end-to-end story:
+
+Overview → Is the system healthy?
+Data → Can I trust the data?
+Metrics → Where is the model failing?
+Issues → What should Data Ops do about it?
+
+-----------------------------------
+1. OVERVIEW PAGE
+-----------------------------------
+
+Simplify the Overview into four compact sections:
+
+A. Model Health
+Show only the most important model KPIs:
+- MAE
+- P90 Error
+- Within ±10 min
+- Underprediction Rate
+
+B. Operational Health
+Show compact KPIs for:
+- Data Readiness
+- Open P0 Issues
+- Active Vendor Batches
+- Annotation QA
+
+C. Needs Attention
+Show only the top 3 highest-priority issues, for example:
+- Mumbai × Heavy Rain
+- Bengaluru × Rider Reassignment
+- New Restaurants
+
+Each should show severity, cohort, key performance degradation, and a link/action to view the issue.
+
+D. Vendor & Batch Status
+Keep the existing Batch Intake / Vendor Batch functionality, but make it compact.
+Display:
+- Batch ID
+- Vendor
+- Progress %
+- QA Score
+- SLA
+- Status
+
+Support multiple vendors such as Vendor-A, Vendor-B, and Internal QA.
+
+REMOVE or heavily simplify the existing “Operating Posture / Signal Board” because it duplicates information available elsewhere.
+
+-----------------------------------
+2. DATA PAGE
+-----------------------------------
+
+Keep the existing governed ingestion workflow:
+Upload → Schema Validation → Data Quality → Preview → Classification → Approve Ingestion.
+
+Keep:
+- Data Readiness
+- Annotation QA
+- Human approval
+- Existing validation logic
+
+Rename “Manual Edge-Case Entry” to:
+
+“Proactive Edge Case Intake”
+
+Add a short description:
+“Log known upcoming operational risks before they appear as production model failures.”
+
+This should remain separate from automated issue detection and can capture risks such as:
+- new city launches
+- upcoming festivals
+- severe weather
+- operational changes
+- new restaurant cohorts
+
+Do not change the approved order schema.
+
+-----------------------------------
+3. METRICS PAGE
+-----------------------------------
+
+Keep this page analytical and focused only on:
+
+Global Performance
+→ Service Surface by City
+→ Cohort Drill-Down
+
+Keep:
+- MAE
+- P90
+- Within ±10 min
+- Underprediction
+- City comparison
+- Existing filters/drill-downs
+
+Do NOT add vendor, annotation, edge-case intake, or operational workflow information here.
+
+The purpose of this page is simply:
+“Where is the model failing?”
+
+-----------------------------------
+4. ISSUES PAGE
+-----------------------------------
+
+Merge “Emerging Issues & Action Queue” and “Edge Case Radar” into one unified section:
+
+“Issues & Edge Cases”
+
+Do not show the same incident twice.
+
+Each issue should clearly present:
+
+Signal
+→ Evidence
+→ Root-Cause Hypothesis
+→ Recommended Data Action
+→ Human Decision
+
+Show:
+- P0/P1/P2
+- Cohort
+- MAE
+- Baseline MAE
+- P90 where available
+- Underprediction
+- Affected records/sample size
+- Performance degradation
+- Suspected cause
+- Recommended Data Ops action
+- Human approval/review status
+
+Keep Targeted Data Acquisition as a major part of this page.
+
+For a selected issue show a compact Targeted Data Plan with:
+- Cohort
+- Data role: Baseline / Seasonal / Edge Case
+- Current coverage
+- Desired coverage
+- Coverage gap
+- Sampling strategy
+- Annotation priority
+- Reason for collection
+
+The purpose should be:
+“Do not collect more data. Collect the data required to close a demonstrated model gap.”
+
+-----------------------------------
+5. TERMINOLOGY CLEANUP
+-----------------------------------
+
+Reduce terminology overload throughout the UI.
+
+Prefer these simple labels:
+
+- Model Health
+- Data Health
+- Vendor Batches
+- City Performance
+- Issues & Edge Cases
+- Targeted Data Plan
+- Proactive Edge Case Intake
+
+Avoid introducing additional names for the same concepts.
+
+-----------------------------------
+6. FINAL USER EXPERIENCE
+-----------------------------------
+
+The finished application should make this workflow immediately understandable:
+
+Production
+→ Monitor
+→ Detect
+→ Triage
+→ Target Data
+→ Vendor / Human Review
+→ QA
+→ Evaluate
+→ Retrain
+→ Regression Test
+→ Human Approval
+→ Production
+
+The application should feel like an AI Data Operations decision-support system, not a collection of unrelated dashboards.
+
+AI can detect, triage, and recommend, but humans should remain responsible for consequential actions.
+
+Keep the interface compact and presentation-friendly. Avoid adding new cards or sections unless they directly support the four core questions.
+
+Before finishing, verify that all existing routes, data upload, calculations, filters, issue detection, human decisions, and vendor batch functionality still work.
