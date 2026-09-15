@@ -1,0 +1,156 @@
+# AI Prompting & Development Progress
+
+The QuickBite prototype was built using **iterative AI-assisted development**, not a single prompt.
+
+My approach was:
+
+**Prompt → Build → Review → Identify Gap → Refine → Test**
+
+AI accelerated implementation, while I retained ownership of the operating model, metrics, data strategy, governance, and final decisions.
+
+---
+
+## Prompt Progression
+
+| Prompt | Focus | Why I Added It |
+|---|---|---|
+| **01 — Initial Dashboard** | Model, pipeline, QA, vendor and issue monitoring | Establish the basic AI Data Ops control room |
+| **02 — Actionable Dashboard** | Recommendations, severity, sample size, priority | The first version showed problems but didn't answer **“What should Data Ops do next?”** |
+| **03 — Data Segmentation** | Stable, Seasonal and Edge-Case data | Different data types require different sourcing, sampling and refresh strategies |
+| **04 — Edge Case Radar** | Emerging operational risks | Move from only detecting failures to anticipating **what might fail next** |
+| **05 — Agentic Workflow** | Detection → Triage → Data Strategy → Evaluation | Break AI assistance into clear operational responsibilities |
+| **06 — Human Governance** | Approve / Modify / Reject + Decision Trace | AI should recommend, but humans control consequential actions |
+| **07 — Data Ingestion** | CSV/JSON → Validate → Preview → Approve | Move from a static demo toward a functional Data Ops workflow |
+| **08 — Dynamic Analytics** | MAE, P90, QA, readiness, cohort issues | Make approved data drive the dashboard instead of static values |
+| **08 — Drill-Down** | Overview → Data → Metrics → Issues | Allow operators to move from **signal → evidence → action** |
+| **Next Iteration** | UX simplification | Reduce duplication and simplify the final presentation |
+
+---
+
+## How the Product Evolved
+
+**Monitoring**
+
+↓  
+**Actionable Recommendations**
+
+↓  
+**Targeted Data Strategy**
+
+↓  
+**Proactive Edge-Case Detection**
+
+↓  
+**Agentic Decision Support**
+
+↓  
+**Human Governance**
+
+↓  
+**Governed Data Ingestion**
+
+↓  
+**Dynamic Analytics**
+
+↓  
+**Signal → Evidence → Action**
+
+---
+
+## AI vs Human Responsibility
+
+### AI / Replit accelerated
+- UI and React implementation
+- Component creation
+- Workflow implementation
+- Code iteration and refactoring
+- Visualization and navigation
+
+### I defined and controlled
+- Data Ops operating model
+- KPI and evaluation strategy
+- Stable / Seasonal / Edge-Case strategy
+- Targeted data approach
+- Agent responsibilities
+- Human approval boundaries
+- Acceptance criteria
+- Final implementation decisions
+
+> **AI accelerated implementation; it did not own the product decisions.**
+
+---
+
+## Key Prompting Learning
+
+My prompting became more structured as the application matured:
+
+**Broad Prompting**  
+“Build an AI Data Operations dashboard.”
+
+↓
+
+**Iterative Prompting**  
+“The dashboard is too descriptive. Make issues actionable.”
+
+↓
+
+**Constraint-Based Prompting**  
+“Change this workflow without changing the approved schema or existing calculations.”
+
+↓
+
+**Acceptance-Criteria Prompting**  
+“After approval, all pages must dynamically use the approved dataset.”
+
+This reduced unintended changes as the application became more complex.
+
+---
+
+## Important Design Principle
+
+I intentionally kept deterministic calculations such as:
+
+**MAE, P90, missing values, duplicates and validation**
+
+outside AI reasoning.
+
+AI is more useful for:
+
+**Detection → Triage → Hypothesis → Recommendation**
+
+while humans remain responsible for consequential decisions.
+
+> **Deterministic where possible, AI-assisted where useful, human-governed where consequential.**
+
+---
+
+## Proposed Next Iteration — Not Executed
+
+The final UX simplification prompt in `/prompts` was **not injected into the deployed application**.
+
+During final review, I identified some duplicated information across Overview, Issues and Edge Case Radar and prepared a simplification prompt.
+
+My available Replit credits ended before I could implement and regression-test the change, so I retained the **last tested working version**.
+
+The proposed simplification was:
+
+- **Overview:** Is the system healthy?
+- **Data:** Can I trust the data?
+- **Metrics:** Where is the model failing?
+- **Issues:** What should Data Ops do?
+
+---
+
+## Final Takeaway
+
+The prompting journey was not:
+
+**“Ask AI to build a dashboard.”**
+
+It was:
+
+**Define → Build → Review → Challenge → Refine → Validate**
+
+The prototype evolved from a monitoring dashboard into an **AI-assisted Data Operations decision-support system** connecting:
+
+**Production Signal → Model Gap → Targeted Data → Human/Vendor Execution → Evaluation → Model Improvement**
